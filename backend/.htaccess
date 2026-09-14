@@ -1,0 +1,23 @@
+RewriteEngine On
+
+# Force HTTPS (enable after SSL is active)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Route /api/ requests to the PHP backend
+RewriteCond %{REQUEST_URI} ^/api/
+RewriteRule ^api/(.*)$ /api/index.php [L,QSA]
+
+# Block access to sensitive backend files
+RewriteRule ^config/ - [F,L]
+RewriteRule ^controllers/ - [F,L]
+RewriteRule ^middleware/ - [F,L]
+RewriteRule ^models/ - [F,L]
+RewriteRule ^services/ - [F,L]
+RewriteRule ^storage/ - [F,L]
+RewriteRule \.env$ - [F,L]
+
+# React SPA fallback — serve index.html for all non-file, non-directory routes
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.html [QSA,L]

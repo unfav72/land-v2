@@ -1,12 +1,12 @@
-import React from 'react';
-import { useAuthStore, signInWithGoogle, logOut } from '../store/authStore';
-import { signInWithGoogle as firebaseSignIn, logOut as firebaseLogOut } from '../lib/firebase';
+import { useState } from 'react';
+import { useAuthStore } from '../store/authStore';
+import { signInWithGoogle as firebaseSignIn } from '../lib/firebase';
 import axios from 'axios';
 import { Building2 } from 'lucide-react';
 
 export default function Login() {
   const { setUser, setLoading, isLoading } = useAuthStore();
-  const [error, setError] = React.useState('');
+  const [error, setError] = useState('');
 
   const handleLogin = async () => {
     try {

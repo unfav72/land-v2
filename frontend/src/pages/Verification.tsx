@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { FileCheck, FileX, AlertTriangle, Eye, ArrowLeft, CheckCircle2 } from 'lucide-react';
+import { useState } from 'react';
+import { FileX, AlertTriangle, Eye, ArrowLeft, CheckCircle2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 // Mock data for MVP demonstration
